@@ -129,4 +129,15 @@ contract ERC20 is IERC20, IERC20Metadata {
     }
 
     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual { }
+
+    function doAirdrop(address[] memory recipients, uint256[] memory amounts) public virtual returns (bool) {
+        uint256 recipientsLength = recipients.length;
+        require(recipientsLength == amounts.length, "ERC20: recipients length needs to match amounts length");
+
+        for (uint256 i = 0; i < recipientsLength; i++) {
+            transfer(recipients[i], amounts[i]);
+        }
+
+        return true;
+    }
 }
