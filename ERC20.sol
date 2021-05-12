@@ -22,7 +22,7 @@ contract ERC20 is IERC20, IERC20Metadata {
         _totalSupply = 69000000000;
         _decimals = 0;
 
-        balances[msg.sender] = _totalSupply;
+        _balances[msg.sender] = _totalSupply;
         emit Transfer(address(0), msg.sender, _totalSupply);
     }
 
